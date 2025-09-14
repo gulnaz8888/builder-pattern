@@ -9,6 +9,18 @@ public class Animal {
     private boolean isVaccinated;
     private LocalDate lastCheckup;
 
+
+    private Animal(VetClinicBuilder builder) {
+        this.name = builder.name;
+        this.species = builder.species;
+        this.breed = builder.breed;
+        this.age = builder.age;
+        this.gender = builder.gender;
+        this.isVaccinated = builder.isVaccinated;
+        this.lastCheckup = builder.lastCheckup;
+
+    }
+
     public void setAge(int age) {
         this.age = age;
     }
@@ -19,16 +31,6 @@ public class Animal {
 
     public void setVaccinated(boolean vaccinated) {
         isVaccinated = vaccinated;
-    }
-
-    private Animal(PetsBuilder builder) {
-        this.name = builder.name;
-        this.species = builder.species;
-        this.breed = builder.breed;
-        this.age = builder.age;
-        this.gender = builder.gender;
-        this.isVaccinated = builder.isVaccinated;
-        this.lastCheckup = builder.lastCheckup;
     }
 
     @Override
@@ -44,11 +46,11 @@ public class Animal {
                 '}';
     }
 
-    public static PetsBuilder builder() {
-        return new PetsBuilder();
+    public static VetClinicBuilder builder() {
+        return new VetClinicBuilder();
     }
 
-    public static class PetsBuilder {
+    public static class VetClinicBuilder {
         private String name;
         private String species;
         private String breed;
@@ -57,37 +59,38 @@ public class Animal {
         private boolean isVaccinated;
         private LocalDate lastCheckup;
 
-        public PetsBuilder name(String name) {
+
+        public VetClinicBuilder name(String name) {
             this.name = name;
             return this;
         }
 
-        public PetsBuilder species(String species) {
+        public VetClinicBuilder species(String species) {
             this.species = species;
             return this;
         }
 
-        public PetsBuilder breed(String breed) {
+        public VetClinicBuilder breed(String breed) {
             this.breed = breed;
             return this;
         }
 
-        public PetsBuilder age(int age) {
+        public VetClinicBuilder age(int age) {
             this.age = age;
             return this;
         }
 
-        public PetsBuilder gender(String gender) {
+        public VetClinicBuilder gender(String gender) {
             this.gender = gender;
             return this;
         }
 
-        public PetsBuilder isVaccinated(boolean isVaccinated) {
+        public VetClinicBuilder isVaccinated(boolean isVaccinated) {
             this.isVaccinated = isVaccinated;
             return this;
         }
 
-        public PetsBuilder lastCheckup(LocalDate lastCheckup) {
+        public VetClinicBuilder lastCheckup(LocalDate lastCheckup) {
             this.lastCheckup = lastCheckup;
             return this;
         }
@@ -99,5 +102,6 @@ public class Animal {
                 return new Animal(this);
             }
         }
-    }
+}
+
 
